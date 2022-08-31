@@ -1,0 +1,17 @@
+C:\MSSA-Training\Technical\MyCohortProjects\WinFormsDesktopQuiz\bin\Debug\WinFormsDesktopQuiz.exe.config
+C:\MSSA-Training\Technical\MyCohortProjects\WinFormsDesktopQuiz\bin\Debug\WinFormsDesktopQuiz.exe
+C:\MSSA-Training\Technical\MyCohortProjects\WinFormsDesktopQuiz\bin\Debug\WinFormsDesktopQuiz.pdb
+C:\MSSA-Training\Technical\MyCohortProjects\WinFormsDesktopQuiz\bin\Debug\EntityFramework.dll
+C:\MSSA-Training\Technical\MyCohortProjects\WinFormsDesktopQuiz\bin\Debug\EntityFramework.SqlServer.dll
+C:\MSSA-Training\Technical\MyCohortProjects\WinFormsDesktopQuiz\bin\Debug\EntityFramework.xml
+C:\MSSA-Training\Technical\MyCohortProjects\WinFormsDesktopQuiz\bin\Debug\EntityFramework.SqlServer.xml
+C:\MSSA-Training\Technical\MyCohortProjects\WinFormsDesktopQuiz\obj\Debug\WinFormsDesktopQuiz.csproj.AssemblyReference.cache
+C:\MSSA-Training\Technical\MyCohortProjects\WinFormsDesktopQuiz\obj\Debug\WinFormsDesktopQuiz.csproj.SuggestedBindingRedirects.cache
+C:\MSSA-Training\Technical\MyCohortProjects\WinFormsDesktopQuiz\obj\Debug\WinFormsDesktopQuiz.Form1.resources
+C:\MSSA-Training\Technical\MyCohortProjects\WinFormsDesktopQuiz\obj\Debug\WinFormsDesktopQuiz.Properties.Resources.resources
+C:\MSSA-Training\Technical\MyCohortProjects\WinFormsDesktopQuiz\obj\Debug\WinFormsDesktopQuiz.csproj.GenerateResource.cache
+C:\MSSA-Training\Technical\MyCohortProjects\WinFormsDesktopQuiz\obj\Debug\WinFormsDesktopQuiz.csproj.CoreCompileInputs.cache
+C:\MSSA-Training\Technical\MyCohortProjects\WinFormsDesktopQuiz\obj\Debug\WinFormsDesktopQuiz.csproj.CopyComplete
+C:\MSSA-Training\Technical\MyCohortProjects\WinFormsDesktopQuiz\obj\Debug\WinFormsDesktopQuiz.exe
+C:\MSSA-Training\Technical\MyCohortProjects\WinFormsDesktopQuiz\obj\Debug\WinFormsDesktopQuiz.pdb
+C:\MSSA-Training\Technical\MyCohortProjects\WinFormsDesktopQuiz\obj\Debug\WinFormsDesktopQuiz.QuizForm.resources
