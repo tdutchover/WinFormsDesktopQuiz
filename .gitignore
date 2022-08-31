@@ -348,3 +348,24 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+
+# Travis added the following to ignore. 
+# Copy from the following stackoverflow
+# https://stackoverflow.com/questions/11123248/gitignore-and-visual-studio-project-ignore-bin-debug-directory-but-not-bin-rel
+/build/
+*.suo
+*.user
+_ReSharper.*/
+*.sdf
+bin/
+obj/
+Debug/
+Release/
+*.opensdf
+*.tlog
+*.log
+TestResult.xml
+*.VisualState.xml
+Version.cs
+Version.h
+Version.cpp
