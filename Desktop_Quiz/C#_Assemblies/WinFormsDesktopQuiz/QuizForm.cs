@@ -13,7 +13,7 @@ namespace WinFormsDesktopQuiz
 {
     internal partial class QuizForm : Form
     {
-        private Form1 _parentForm;
+        private Form1 _landingPageForm;
         private QuizRepository _quizRespository;
 
         private int correctAnswersSoFar;
@@ -35,7 +35,7 @@ namespace WinFormsDesktopQuiz
         public QuizForm(Form1 parentForm, QuizRepository quizRespository)
         {
             InitializeComponent();
-            this._parentForm = parentForm;
+            this._landingPageForm = parentForm;
             this._quizRespository = quizRespository;
 
             correctAnswersSoFar = 0;
@@ -50,7 +50,7 @@ namespace WinFormsDesktopQuiz
                 // TODO: Have the landing page send the _questions. There should never be a need to check zero
                 //         _questions by the time we're in the quiz.
                 //       Should display a message to the user to explain the problem.
-                NavigationUtils.NavigateToLandingPage(this._parentForm, this);
+                NavigationUtils.NavigateToLandingPage(this._landingPageForm, this);
             }
 
             btnSubmitAnswer.Visible = false;
@@ -127,7 +127,9 @@ namespace WinFormsDesktopQuiz
             else if (this._currentQuestionIndex == this._totalQuestionCount - 1)
             {
                 // Submitting Quiz
-                NavigationUtils.NavigateToLandingPage(this._parentForm, this);
+                QuizCompletedForm quizCompletedForm = new QuizCompletedForm(this._landingPageForm, this._quizRespository, correctAnswersSoFar);
+                NavigationUtils.NavigateToForm(quizCompletedForm, this);
+                //NavigationUtils.NavigateToLandingPage(this._landingPageForm, this);    //TODO Delete old
             }
         }
         private Question GetQuestion(int questionIndex)
@@ -166,7 +168,7 @@ namespace WinFormsDesktopQuiz
 
             // We navigate back to the landing page during the closing event because there are several ways to close the form
             // and we must handle any way of closing this quiz session by navigating back to the landing page.
-            NavigationUtils.NavigateToLandingPage(this._parentForm, this);
+            NavigationUtils.NavigateToLandingPage(this._landingPageForm, this);
         }
         private void radioBtn_AnswerCandidate1_Click(object sender, EventArgs e)
         {

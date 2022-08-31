@@ -39,7 +39,7 @@
             // questionGrid
             // 
             this.questionGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.questionGrid.Location = new System.Drawing.Point(25, 25);
+            this.questionGrid.Location = new System.Drawing.Point(131, 25);
             this.questionGrid.Name = "questionGrid";
             this.questionGrid.Size = new System.Drawing.Size(1085, 176);
             this.questionGrid.TabIndex = 3;
@@ -47,7 +47,7 @@
             // 
             // txtSqlResults
             // 
-            this.txtSqlResults.Location = new System.Drawing.Point(25, 218);
+            this.txtSqlResults.Location = new System.Drawing.Point(131, 218);
             this.txtSqlResults.Multiline = true;
             this.txtSqlResults.Name = "txtSqlResults";
             this.txtSqlResults.Size = new System.Drawing.Size(1135, 139);
@@ -56,7 +56,7 @@
             // answerGrid
             // 
             this.answerGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.answerGrid.Location = new System.Drawing.Point(25, 364);
+            this.answerGrid.Location = new System.Drawing.Point(131, 364);
             this.answerGrid.Name = "answerGrid";
             this.answerGrid.Size = new System.Drawing.Size(1085, 123);
             this.answerGrid.TabIndex = 5;
@@ -64,7 +64,7 @@
             // btnGoToLeaderBoard
             // 
             this.btnGoToLeaderBoard.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGoToLeaderBoard.Location = new System.Drawing.Point(475, 634);
+            this.btnGoToLeaderBoard.Location = new System.Drawing.Point(564, 638);
             this.btnGoToLeaderBoard.Name = "btnGoToLeaderBoard";
             this.btnGoToLeaderBoard.Size = new System.Drawing.Size(137, 55);
             this.btnGoToLeaderBoard.TabIndex = 8;

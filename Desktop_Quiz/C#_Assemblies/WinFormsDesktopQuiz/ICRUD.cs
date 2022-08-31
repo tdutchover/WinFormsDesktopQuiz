@@ -6,6 +6,13 @@ using System.Threading.Tasks;
 
 namespace WinFormsDesktopQuiz
 {
+    public interface IScoreCRUD
+    {
+        ICollection<Score> GetAllScoreRecords();
+        void AddScoreRecord(Score score);
+        //void DeleteScoreRecord(Score score);
+        //void UpdateScoreRecord(Score score);
+    }
     public interface IQuestionCRUD
     {
         Question FindQuestion(int questionId);

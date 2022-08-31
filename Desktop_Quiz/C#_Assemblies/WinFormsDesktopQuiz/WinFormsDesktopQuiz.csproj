@@ -84,6 +84,12 @@
     <Compile Include="QuestionAnswer.cs">
       <DependentUpon>QuizModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="QuizCompletedForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuizCompletedForm.Designer.cs">
+      <DependentUpon>QuizCompletedForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="QuizForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,6 +116,10 @@
     </Compile>
     <Compile Include="QuizRepository.Question.cs" />
     <Compile Include="QuizRepository.QuestionAnswer.cs" />
+    <Compile Include="QuizRepository.Score.cs" />
+    <Compile Include="Score.cs">
+      <DependentUpon>QuizModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="TextResources.cs" />
     <EmbeddedResource Include="AdminForm.resx">
       <DependentUpon>AdminForm.cs</DependentUpon>
@@ -126,6 +136,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="QuizCompletedForm.resx">
+      <DependentUpon>QuizCompletedForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="QuizForm.resx">
       <DependentUpon>QuizForm.cs</DependentUpon>
     </EmbeddedResource>

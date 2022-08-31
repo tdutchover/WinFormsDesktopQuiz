@@ -28,5 +28,6 @@ namespace WinFormsDesktopQuiz
         public virtual DbSet<Answer> Answers { get; set; }
         public virtual DbSet<Question> Questions { get; set; }
         public virtual DbSet<QuestionAnswer> QuestionAnswers { get; set; }
+        public virtual DbSet<Score> Scores { get; set; }
     }
 }

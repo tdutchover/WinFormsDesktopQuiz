@@ -10,6 +10,7 @@
         <EntityTypeShape EntityType="PCAD7QuizModel.QuestionAnswer" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
         <AssociationConnector Association="PCAD7QuizModel.FK_QuestionAnswer_Answer" ManuallyRouted="false" />
         <AssociationConnector Association="PCAD7QuizModel.FK_QuestionAnswer_Question" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="PCAD7QuizModel.Score" Width="1.5" PointX="3.375" PointY="3.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -167,7 +167,7 @@
             // btnAbort
             // 
             this.btnAbort.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAbort.Location = new System.Drawing.Point(46, 638);
+            this.btnAbort.Location = new System.Drawing.Point(60, 638);
             this.btnAbort.Name = "btnAbort";
             this.btnAbort.Size = new System.Drawing.Size(137, 55);
             this.btnAbort.TabIndex = 5;
@@ -188,7 +188,7 @@
             // btnSubmitAnswer
             // 
             this.btnSubmitAnswer.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSubmitAnswer.Location = new System.Drawing.Point(539, 638);
+            this.btnSubmitAnswer.Location = new System.Drawing.Point(564, 638);
             this.btnSubmitAnswer.Name = "btnSubmitAnswer";
             this.btnSubmitAnswer.Size = new System.Drawing.Size(146, 55);
             this.btnSubmitAnswer.TabIndex = 7;
