@@ -9,10 +9,15 @@ namespace WinFormsDesktopQuiz
 {
     internal class NavigationUtils
     {
-        public static void NavigateToLandingPage(Form toParentForm, Form fromChildForm)
+        public static void NavigateToLandingPage(Form1 toLandingPageForm, Form fromChildForm)
         {
-            toParentForm.Show();
+            toLandingPageForm.Show();
             fromChildForm.Hide();
+        }
+        public static void NavigateToForm(Form toForm, Form fromForm)
+        {
+            toForm.Show();
+            fromForm.Hide();
         }
     }
 }
