@@ -129,7 +129,9 @@ namespace WinFormsDesktopQuiz
                 // Submitting Quiz
                 QuizCompletedForm quizCompletedForm = new QuizCompletedForm(this._landingPageForm, this._quizRespository, correctAnswersSoFar);
                 NavigationUtils.NavigateToForm(quizCompletedForm, this);
-                //NavigationUtils.NavigateToLandingPage(this._landingPageForm, this);    //TODO Delete old
+
+                // Don't invoke this.Close() here because that will execute the FormClosing handler, which will navigate to the landing page
+                // instead of QuizCompletedForm above. Instead, we let the landing page close this form.
             }
         }
         private Question GetQuestion(int questionIndex)

@@ -44,20 +44,21 @@ namespace WinFormsDesktopQuiz
             txtSqlResults.Clear();
             txtSqlResults.Text = sb.ToString();
         }
+        // TODO Delete old
         // Prototype to display _questions and answers from DB
-        private void DisplayQuestionAndAnswersInTextBox()
-        {
-            StringBuilder sb = new StringBuilder();
-            var qaResult = _quizRespository.GetAllQuestionAnswerRecords();
+        //private void DisplayQuestionAndAnswersInTextBox()
+        //{
+        //    StringBuilder sb = new StringBuilder();
+        //    var qaResult = _quizRespository.GetAllQuestionAnswerRecords();
 
-            foreach (var qa in qaResult)
-            {
-                sb.AppendLine($"QuestionId: {qa.QuestionId}, Question.Description: {qa.Question.Description}, AnswerId: {qa.AnswerId}, Answer.Description: {qa.Answer.Description}\n");
-            }
+        //    foreach (var qa in qaResult)
+        //    {
+        //        sb.AppendLine($"QuestionId: {qa.QuestionId}, Question.Description: {qa.Question.Description}, AnswerId: {qa.AnswerId}, Answer.Description: {qa.Answer.Description}\n");
+        //    }
 
-            txtSqlResults.Clear();
-            txtSqlResults.Text = sb.ToString();
-        }
+        //    txtSqlResults.Clear();
+        //    txtSqlResults.Text = sb.ToString();
+        //}
         private void AdminForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             // This is a child form that I can't close the app from without causing problems.
@@ -71,7 +72,7 @@ namespace WinFormsDesktopQuiz
         }
         private void btnGoToLeaderBoard_Click(object sender, EventArgs e)
         {
-            NavigationUtils.NavigateToLandingPage(this._parentForm, this);
+            this.Close();
         }
     }
 }

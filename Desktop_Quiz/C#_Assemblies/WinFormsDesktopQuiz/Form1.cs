@@ -25,7 +25,18 @@ namespace WinFormsDesktopQuiz
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            //TODO: Delete?
+            DisplayLeaderboardContent();
+            DataGridViewColumn columnScoreId = leaderBoardGrid.Columns[0];
+            columnScoreId.Visible = false;
+
+            DataGridViewColumn columnCallSign = leaderBoardGrid.Columns[1];
+            columnCallSign.Width = 500;
+            columnCallSign.HeaderText = "Call Sign";
+
+            DataGridViewColumn columnQuizScore = leaderBoardGrid.Columns[2];
+            columnQuizScore.Width = 500;
+            columnQuizScore.HeaderText = "Quiz Score";
+
         }
         private void btnStartQuiz_Click(object sender, EventArgs e)
         {
@@ -39,12 +50,10 @@ namespace WinFormsDesktopQuiz
             _quizForm.Show();
             this.Hide();
         }
-        private void questionGrid_DoubleClick(object sender, EventArgs e)
-        {
-            // TODO Delete old
-        }
         private void Form1_Activated(object sender, EventArgs e)
         {
+            DisplayLeaderboardContent();
+
             if (NavigatedFrom.QuizFormSession == navigatedFrom)
             {
                 Debug.Assert(_quizForm != null);
@@ -66,6 +75,32 @@ namespace WinFormsDesktopQuiz
             // Control of the user interface is returned to the landing page
             navigatedFrom = NavigatedFrom.ApplicationStartup;
         }
+        private void DisplayLeaderboardContent()
+        {
+            List<Score> scoresSorted = quizRespository.GetAllScoreRecords()
+              .OrderByDescending(scoreRecord => scoreRecord.CorrectAnswerCount)
+              .ToList();
+
+            // Excess scores cannot be displayed on the leaderboard. So remove the lower scores.
+            //int maxLeaderboardItemsAllowed = 3;
+            //if (scoresSorted.Count > maxLeaderboardItemsAllowed)
+            //{
+            //    int numberOfItemsToRemove = scoresSorted.Count - maxLeaderboardItemsAllowed;
+            //    scoresSorted.RemoveRange(maxLeaderboardItemsAllowed - 1, numberOfItemsToRemove);
+            //}
+
+            leaderBoardGrid.DataSource = scoresSorted;
+
+            // TODO Delete old. This was writing the leadboard content to a label.
+            //StringBuilder sb = new StringBuilder();
+            //foreach (Score score in scoresSorted)
+            //{
+            //    string leaderBoardLine = $"Call Sign: {score.CallSign}\t\tQuiz Score: {score.CorrectAnswerCount}";
+            //    sb.AppendLine(leaderBoardLine);
+            //}
+
+            //txtLeaderBoard.Text = sb.ToString();
+        }
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             // TODO: Confirm - I believe this will close all windows. So we don't have to explicitely close them. Test to confirm.
@@ -82,7 +117,8 @@ namespace WinFormsDesktopQuiz
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            // Force the FormClosing event to occur, which in turn exits the application and closes all windows.
+            this.Close();
         }
 
         private void btnAdmin_Click(object sender, EventArgs e)
