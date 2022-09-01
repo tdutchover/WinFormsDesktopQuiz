@@ -26,17 +26,19 @@ namespace WinFormsDesktopQuiz
         private void Form1_Load(object sender, EventArgs e)
         {
             DisplayLeaderboardContent();
-            DataGridViewColumn columnScoreId = leaderBoardGrid.Columns[0];
+            int columnScoreIdIndex = 0;
+            DataGridViewColumn columnScoreId = leaderBoardGrid.Columns[columnScoreIdIndex];
             columnScoreId.Visible = false;
 
-            DataGridViewColumn columnCallSign = leaderBoardGrid.Columns[1];
-            columnCallSign.Width = 500;
+            int callSignColumnIndex = 1;
+            DataGridViewColumn columnCallSign = leaderBoardGrid.Columns[callSignColumnIndex];
+            //columnCallSign.Width = 500;                   // TODO Use later to fine-tune column width
             columnCallSign.HeaderText = "Call Sign";
 
-            DataGridViewColumn columnQuizScore = leaderBoardGrid.Columns[2];
-            columnQuizScore.Width = 500;
+            int quizScoreColumnIndex = 2;
+            DataGridViewColumn columnQuizScore = leaderBoardGrid.Columns[quizScoreColumnIndex];
+            //columnQuizScore.Width = 500;                  // TODO Use later to fine-tune column width
             columnQuizScore.HeaderText = "Quiz Score";
-
         }
         private void btnStartQuiz_Click(object sender, EventArgs e)
         {

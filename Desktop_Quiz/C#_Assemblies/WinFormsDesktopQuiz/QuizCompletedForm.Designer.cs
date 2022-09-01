@@ -86,6 +86,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "QuizCompletedForm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.QuizCompletedForm_FormClosing);
+            this.Load += new System.EventHandler(this.QuizCompletedForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

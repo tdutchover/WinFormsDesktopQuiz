@@ -24,41 +24,48 @@ namespace WinFormsDesktopQuiz
         {
             var questions = _quizRespository.GetAllQuestionRecords();
             questionGrid.DataSource = questions;
+            AdjustQuestionGridUserInterface();
         }
         private void questionGrid_DoubleClick(object sender, EventArgs e)
         {
             var questionId = (int)questionGrid.CurrentRow.Cells[0].Value;
-            DisplayAnswers(questionId);
-            answerGrid.DataSource = _quizRespository.FindAnswersGlob(questionId);
+            answerGrid.DataSource = _quizRespository.FindDTOAnswersForQuestion(questionId);
+            AdjustAnswerGridUI();
+            //DisplayAnswers(questionId);   //TODO Delete test code. Don't need to display answers in text box
         }
-        private void DisplayAnswers(int questionId)
+        /// <summary>
+        /// Only invoke this after first populating the grid so the column UI can be changed
+        /// </summary>
+        private void AdjustQuestionGridUserInterface()
         {
-            StringBuilder sb = new StringBuilder();
+            // Rename the "QuestionId" column header because we don't want that database column name.
+            int questionIdColumnIndex = 0;
+            DataGridViewColumn questionIdColumn = questionGrid.Columns[questionIdColumnIndex];
+            questionIdColumn.HeaderText = "Question Id";
 
-            List<string> answerList = _quizRespository.FindAnswersAsStringList(questionId);
-            foreach (var answer in answerList)
-            {
-                sb.AppendLine(answer);
-            }
+            // We don't rename the "Description" column header text because we like it as is.
 
-            txtSqlResults.Clear();
-            txtSqlResults.Text = sb.ToString();
+            // Hide the 3rd column that data field Question.QuestionAnswers would cause to display.
+            // The columns are 0-based.
+            int questionAnswerColumnIndex = 2;
+            DataGridViewColumn questionAnswerColumn = questionGrid.Columns[questionAnswerColumnIndex];
+            questionAnswerColumn.Visible = false;
         }
-        // TODO Delete old
-        // Prototype to display _questions and answers from DB
-        //private void DisplayQuestionAndAnswersInTextBox()
-        //{
-        //    StringBuilder sb = new StringBuilder();
-        //    var qaResult = _quizRespository.GetAllQuestionAnswerRecords();
+        private void AdjustAnswerGridUI()
+        {
+            // Rename the "QuestionId" column header because we don't want that database column name.
+            int answerDescriptionColumnIndex = 0;
+            DataGridViewColumn answerDescriptionColumn = answerGrid.Columns[answerDescriptionColumnIndex];
+            answerDescriptionColumn.HeaderText = "Answer Description";
 
-        //    foreach (var qa in qaResult)
-        //    {
-        //        sb.AppendLine($"QuestionId: {qa.QuestionId}, Question.Description: {qa.Question.Description}, AnswerId: {qa.AnswerId}, Answer.Description: {qa.Answer.Description}\n");
-        //    }
+            // We don't rename the "Description" column header text because we like it as is.
 
-        //    txtSqlResults.Clear();
-        //    txtSqlResults.Text = sb.ToString();
-        //}
+            // Hide the 3rd column that data field Question.QuestionAnswers would cause to display.
+            // The columns are 0-based.
+            int isCorrectAnswerColumnIndex = 1;
+            DataGridViewColumn isCorrectAnswerColumn = answerGrid.Columns[isCorrectAnswerColumnIndex];
+            isCorrectAnswerColumn.HeaderText = "Correct Answer is Checked";
+        }
         private void AdminForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             // This is a child form that I can't close the app from without causing problems.

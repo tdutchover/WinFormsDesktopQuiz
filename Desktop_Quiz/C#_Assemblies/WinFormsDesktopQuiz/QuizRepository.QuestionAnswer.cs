@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WinFormsDesktopQuiz
 {
-    public class AnswerForQuestion
+    public class AnswerDTO
     {
         public string AnswerDescription { get; set; }
         public bool IsCorrectAnswer { get; set; }
@@ -15,7 +15,7 @@ namespace WinFormsDesktopQuiz
         //private bool _correctAnswer;
         //Answer Answer { get { return answer; } }
         //bool CorrectAnswer { get { return _correctAnswer; } }
-        //public AnswerForQuestion(Answer answer, bool _correctAnswer)
+        //public AnswerDTO(Answer answer, bool _correctAnswer)
         //{
         //    this.answer = answer;
         //    this._correctAnswer = _correctAnswer;
@@ -54,13 +54,13 @@ namespace WinFormsDesktopQuiz
         }
 
         // This is for easy display on a grid
-        public List<AnswerForQuestion> FindAnswersGlob(int questionId)
+        public List<AnswerDTO> FindDTOAnswersForQuestion(int questionId)
         {
             var result = from ans in entities.Answers
                          join qa in entities.QuestionAnswers on ans equals qa.Answer
                          join q in entities.Questions on qa.Question equals q
                          where qa.QuestionId == questionId
-                         select new AnswerForQuestion()
+                         select new AnswerDTO()
                          {
                              AnswerDescription = ans.Description,
                              IsCorrectAnswer = qa.CorrectAnswer
