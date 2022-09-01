@@ -29,38 +29,38 @@
         private void InitializeComponent()
         {
             this.questionGrid = new System.Windows.Forms.DataGridView();
-            this.txtSqlResults = new System.Windows.Forms.TextBox();
             this.answerGrid = new System.Windows.Forms.DataGridView();
             this.btnGoToLeaderBoard = new System.Windows.Forms.Button();
+            this.lblTitle = new System.Windows.Forms.Label();
+            this.lblQuestions = new System.Windows.Forms.Label();
+            this.lblAnswers = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.questionGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.answerGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // questionGrid
             // 
+            this.questionGrid.AllowUserToAddRows = false;
+            this.questionGrid.AllowUserToDeleteRows = false;
             this.questionGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.questionGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.questionGrid.Location = new System.Drawing.Point(69, 38);
+            this.questionGrid.Location = new System.Drawing.Point(69, 78);
             this.questionGrid.Name = "questionGrid";
-            this.questionGrid.Size = new System.Drawing.Size(1085, 129);
+            this.questionGrid.ReadOnly = true;
+            this.questionGrid.Size = new System.Drawing.Size(1085, 194);
             this.questionGrid.TabIndex = 3;
             this.questionGrid.DoubleClick += new System.EventHandler(this.questionGrid_DoubleClick);
             // 
-            // txtSqlResults
-            // 
-            this.txtSqlResults.Location = new System.Drawing.Point(69, 362);
-            this.txtSqlResults.Multiline = true;
-            this.txtSqlResults.Name = "txtSqlResults";
-            this.txtSqlResults.Size = new System.Drawing.Size(1085, 139);
-            this.txtSqlResults.TabIndex = 4;
-            // 
             // answerGrid
             // 
+            this.answerGrid.AllowUserToAddRows = false;
+            this.answerGrid.AllowUserToDeleteRows = false;
             this.answerGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.answerGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.answerGrid.Location = new System.Drawing.Point(69, 191);
+            this.answerGrid.Location = new System.Drawing.Point(69, 375);
             this.answerGrid.Name = "answerGrid";
-            this.answerGrid.Size = new System.Drawing.Size(1085, 123);
+            this.answerGrid.ReadOnly = true;
+            this.answerGrid.Size = new System.Drawing.Size(1085, 109);
             this.answerGrid.TabIndex = 5;
             // 
             // btnGoToLeaderBoard
@@ -74,18 +74,50 @@
             this.btnGoToLeaderBoard.UseVisualStyleBackColor = true;
             this.btnGoToLeaderBoard.Click += new System.EventHandler(this.btnGoToLeaderBoard_Click);
             // 
+            // lblTitle
+            // 
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.Location = new System.Drawing.Point(419, 22);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(434, 37);
+            this.lblTitle.TabIndex = 10;
+            this.lblTitle.Text = "View Questions and Answers";
+            // 
+            // lblQuestions
+            // 
+            this.lblQuestions.AutoSize = true;
+            this.lblQuestions.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblQuestions.Location = new System.Drawing.Point(65, 48);
+            this.lblQuestions.Name = "lblQuestions";
+            this.lblQuestions.Size = new System.Drawing.Size(91, 22);
+            this.lblQuestions.TabIndex = 11;
+            this.lblQuestions.Text = "Questions";
+            // 
+            // lblAnswers
+            // 
+            this.lblAnswers.AutoSize = true;
+            this.lblAnswers.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAnswers.Location = new System.Drawing.Point(65, 345);
+            this.lblAnswers.Name = "lblAnswers";
+            this.lblAnswers.Size = new System.Drawing.Size(79, 22);
+            this.lblAnswers.TabIndex = 12;
+            this.lblAnswers.Text = "Answers";
+            // 
             // AdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1364, 730);
+            this.Controls.Add(this.lblAnswers);
+            this.Controls.Add(this.lblQuestions);
+            this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.btnGoToLeaderBoard);
             this.Controls.Add(this.answerGrid);
-            this.Controls.Add(this.txtSqlResults);
             this.Controls.Add(this.questionGrid);
             this.Name = "AdminForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "AdminForm";
+            this.Text = "View Questions and Answers";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AdminForm_FormClosing);
             this.Load += new System.EventHandler(this.Admin_Load);
             ((System.ComponentModel.ISupportInitialize)(this.questionGrid)).EndInit();
@@ -98,8 +130,10 @@
         #endregion
 
         private System.Windows.Forms.DataGridView questionGrid;
-        private System.Windows.Forms.TextBox txtSqlResults;
         private System.Windows.Forms.DataGridView answerGrid;
         private System.Windows.Forms.Button btnGoToLeaderBoard;
+        private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.Label lblQuestions;
+        private System.Windows.Forms.Label lblAnswers;
     }
 }

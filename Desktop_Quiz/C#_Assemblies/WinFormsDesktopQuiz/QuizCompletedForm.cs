@@ -22,6 +22,10 @@ namespace WinFormsDesktopQuiz
             _quizRespository = quizRespository;
             _correctAnswerCount = correctAnswerCount;
         }
+        private void QuizCompletedForm_Load(object sender, EventArgs e)
+        {
+            lblScoreStatus.Text = $"{_correctAnswerCount} correct answers";
+        }
         private void QuizCompletedForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             Score score = new Score();
