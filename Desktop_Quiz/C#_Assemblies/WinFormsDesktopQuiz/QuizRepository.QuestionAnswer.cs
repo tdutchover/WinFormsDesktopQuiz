@@ -69,7 +69,7 @@ namespace WinFormsDesktopQuiz
             return result.ToList();
         }
 
-
+        // TODO Delete old
         //public ICollection<T> FindAnswersWithCorrectAnswer(int questionId)
         //{
         //    var result = from ans in entities.Answers

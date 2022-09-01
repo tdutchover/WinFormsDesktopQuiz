@@ -38,25 +38,27 @@
             // 
             // questionGrid
             // 
+            this.questionGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.questionGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.questionGrid.Location = new System.Drawing.Point(131, 25);
+            this.questionGrid.Location = new System.Drawing.Point(69, 38);
             this.questionGrid.Name = "questionGrid";
-            this.questionGrid.Size = new System.Drawing.Size(1085, 176);
+            this.questionGrid.Size = new System.Drawing.Size(1085, 129);
             this.questionGrid.TabIndex = 3;
             this.questionGrid.DoubleClick += new System.EventHandler(this.questionGrid_DoubleClick);
             // 
             // txtSqlResults
             // 
-            this.txtSqlResults.Location = new System.Drawing.Point(131, 218);
+            this.txtSqlResults.Location = new System.Drawing.Point(69, 362);
             this.txtSqlResults.Multiline = true;
             this.txtSqlResults.Name = "txtSqlResults";
-            this.txtSqlResults.Size = new System.Drawing.Size(1135, 139);
+            this.txtSqlResults.Size = new System.Drawing.Size(1085, 139);
             this.txtSqlResults.TabIndex = 4;
             // 
             // answerGrid
             // 
+            this.answerGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.answerGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.answerGrid.Location = new System.Drawing.Point(131, 364);
+            this.answerGrid.Location = new System.Drawing.Point(69, 191);
             this.answerGrid.Name = "answerGrid";
             this.answerGrid.Size = new System.Drawing.Size(1085, 123);
             this.answerGrid.TabIndex = 5;

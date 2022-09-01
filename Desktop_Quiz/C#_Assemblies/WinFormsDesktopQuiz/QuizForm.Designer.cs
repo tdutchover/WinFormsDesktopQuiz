@@ -156,7 +156,7 @@
             // btnNext
             // 
             this.btnNext.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNext.Location = new System.Drawing.Point(1115, 638);
+            this.btnNext.Location = new System.Drawing.Point(1042, 638);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(137, 55);
             this.btnNext.TabIndex = 4;
@@ -167,7 +167,7 @@
             // btnAbort
             // 
             this.btnAbort.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAbort.Location = new System.Drawing.Point(60, 638);
+            this.btnAbort.Location = new System.Drawing.Point(65, 638);
             this.btnAbort.Name = "btnAbort";
             this.btnAbort.Size = new System.Drawing.Size(137, 55);
             this.btnAbort.TabIndex = 5;
