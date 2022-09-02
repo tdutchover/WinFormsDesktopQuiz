@@ -15,16 +15,18 @@ namespace WinFormsDesktopQuiz
         private Form1 _landingPageForm;
         private QuizRepository _quizRespository;
         private int _correctAnswerCount;
-        public QuizCompletedForm(Form1 landingPageForm, QuizRepository quizRespository, int correctAnswerCount)
+        private int _totalQuestionCount;
+        public QuizCompletedForm(Form1 landingPageForm, QuizRepository quizRespository, int correctAnswerCount, int totalQuestionCount)
         {
             InitializeComponent();
             _landingPageForm = landingPageForm;
             _quizRespository = quizRespository;
             _correctAnswerCount = correctAnswerCount;
+            _totalQuestionCount = totalQuestionCount;
         }
         private void QuizCompletedForm_Load(object sender, EventArgs e)
         {
-            lblScoreStatus.Text = $"{_correctAnswerCount} correct answers";
+            lblScoreStatus.Text = $"{_correctAnswerCount} correct answers out of {this._totalQuestionCount} questions.";
         }
         private void QuizCompletedForm_FormClosing(object sender, FormClosingEventArgs e)
         {

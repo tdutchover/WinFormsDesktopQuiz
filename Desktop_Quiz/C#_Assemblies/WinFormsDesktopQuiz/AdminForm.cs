@@ -25,14 +25,21 @@ namespace WinFormsDesktopQuiz
             var questions = _quizRespository.GetAllQuestionRecords();
             questionGrid.DataSource = questions;
             AdjustQuestionGridUserInterface();
+            DisplayAnswersGridContent();
         }
         private void questionGrid_DoubleClick(object sender, EventArgs e)
+        {
+            DisplayAnswersGridContent();
+            //DisplayAnswers(questionId);   //TODO Delete test code. Don't need to display answers in text box
+        }
+        private void DisplayAnswersGridContent()
         {
             var questionId = (int)questionGrid.CurrentRow.Cells[0].Value;
             answerGrid.DataSource = _quizRespository.FindDTOAnswersForQuestion(questionId);
             AdjustAnswerGridUI();
-            //DisplayAnswers(questionId);   //TODO Delete test code. Don't need to display answers in text box
+            answerGrid.ClearSelection();
         }
+
         /// <summary>
         /// Only invoke this after first populating the grid so the column UI can be changed
         /// </summary>

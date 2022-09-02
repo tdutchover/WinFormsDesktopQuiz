@@ -42,6 +42,8 @@
             this.lblScoreStatus = new System.Windows.Forms.Label();
             this.btnSubmitAnswer = new System.Windows.Forms.Button();
             this.lblResponseToSelectedAnswer = new System.Windows.Forms.Label();
+            this.lblIdentifyCorrectAnswerWhenWrong = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBoxAnswers.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,7 +51,7 @@
             // 
             this.lblQuizStatus.AutoSize = true;
             this.lblQuizStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblQuizStatus.Location = new System.Drawing.Point(42, 23);
+            this.lblQuizStatus.Location = new System.Drawing.Point(589, 37);
             this.lblQuizStatus.Name = "lblQuizStatus";
             this.lblQuizStatus.Size = new System.Drawing.Size(132, 22);
             this.lblQuizStatus.TabIndex = 0;
@@ -59,7 +61,7 @@
             // 
             this.lblQuestion.AutoSize = true;
             this.lblQuestion.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblQuestion.Location = new System.Drawing.Point(271, 23);
+            this.lblQuestion.Location = new System.Drawing.Point(247, 109);
             this.lblQuestion.Name = "lblQuestion";
             this.lblQuestion.Size = new System.Drawing.Size(167, 22);
             this.lblQuestion.TabIndex = 1;
@@ -87,7 +89,7 @@
             this.groupBoxAnswers.Controls.Add(this.radioBtn_AnswerCandidate2);
             this.groupBoxAnswers.Controls.Add(this.radioBtn_AnswerCandidate1);
             this.groupBoxAnswers.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBoxAnswers.Location = new System.Drawing.Point(275, 121);
+            this.groupBoxAnswers.Location = new System.Drawing.Point(251, 202);
             this.groupBoxAnswers.Name = "groupBoxAnswers";
             this.groupBoxAnswers.Size = new System.Drawing.Size(855, 357);
             this.groupBoxAnswers.TabIndex = 3;
@@ -179,7 +181,7 @@
             // 
             this.lblScoreStatus.AutoSize = true;
             this.lblScoreStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblScoreStatus.Location = new System.Drawing.Point(42, 73);
+            this.lblScoreStatus.Location = new System.Drawing.Point(991, 37);
             this.lblScoreStatus.Name = "lblScoreStatus";
             this.lblScoreStatus.Size = new System.Drawing.Size(158, 22);
             this.lblScoreStatus.TabIndex = 6;
@@ -200,17 +202,39 @@
             // 
             this.lblResponseToSelectedAnswer.AutoSize = true;
             this.lblResponseToSelectedAnswer.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblResponseToSelectedAnswer.Location = new System.Drawing.Point(271, 511);
+            this.lblResponseToSelectedAnswer.Location = new System.Drawing.Point(257, 588);
             this.lblResponseToSelectedAnswer.Name = "lblResponseToSelectedAnswer";
             this.lblResponseToSelectedAnswer.Size = new System.Drawing.Size(250, 22);
             this.lblResponseToSelectedAnswer.TabIndex = 8;
             this.lblResponseToSelectedAnswer.Text = "Response to answer selection";
             // 
+            // lblIdentifyCorrectAnswerWhenWrong
+            // 
+            this.lblIdentifyCorrectAnswerWhenWrong.AutoSize = true;
+            this.lblIdentifyCorrectAnswerWhenWrong.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIdentifyCorrectAnswerWhenWrong.Location = new System.Drawing.Point(805, 588);
+            this.lblIdentifyCorrectAnswerWhenWrong.Name = "lblIdentifyCorrectAnswerWhenWrong";
+            this.lblIdentifyCorrectAnswerWhenWrong.Size = new System.Drawing.Size(238, 22);
+            this.lblIdentifyCorrectAnswerWhenWrong.TabIndex = 9;
+            this.lblIdentifyCorrectAnswerWhenWrong.Text = "Here\'s the correct answer →";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(12, 22);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(246, 37);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "Learning Center";
+            // 
             // QuizForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1364, 730);
+            this.ClientSize = new System.Drawing.Size(1284, 730);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblIdentifyCorrectAnswerWhenWrong);
             this.Controls.Add(this.lblResponseToSelectedAnswer);
             this.Controls.Add(this.btnSubmitAnswer);
             this.Controls.Add(this.lblScoreStatus);
@@ -221,7 +245,7 @@
             this.Controls.Add(this.lblQuizStatus);
             this.Name = "QuizForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Quiz In Progress";
+            this.Text = "Learning Center - Quiz In Progress";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.QuizForm_FormClosing);
             this.Load += new System.EventHandler(this.QuizForm_Load);
             this.groupBoxAnswers.ResumeLayout(false);
@@ -247,5 +271,7 @@
         private System.Windows.Forms.Label lblResponseToSelectedAnswer;
         private System.Windows.Forms.Label lblCorrectAnswer;
         private System.Windows.Forms.Label lblWrongAnswer;
+        private System.Windows.Forms.Label lblIdentifyCorrectAnswerWhenWrong;
+        private System.Windows.Forms.Label label1;
     }
 }

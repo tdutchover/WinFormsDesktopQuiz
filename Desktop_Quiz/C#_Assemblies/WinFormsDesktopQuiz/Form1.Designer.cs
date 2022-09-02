@@ -34,6 +34,7 @@
             this.btnAdmin = new System.Windows.Forms.Button();
             this.leaderBoardGrid = new System.Windows.Forms.DataGridView();
             this.lblLeaderboard = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.form1BindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.leaderBoardGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.form1BindingSource)).BeginInit();
@@ -78,22 +79,32 @@
             this.leaderBoardGrid.AllowUserToDeleteRows = false;
             this.leaderBoardGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.leaderBoardGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.leaderBoardGrid.Location = new System.Drawing.Point(164, 116);
+            this.leaderBoardGrid.Location = new System.Drawing.Point(164, 254);
             this.leaderBoardGrid.MultiSelect = false;
             this.leaderBoardGrid.Name = "leaderBoardGrid";
             this.leaderBoardGrid.ReadOnly = true;
-            this.leaderBoardGrid.Size = new System.Drawing.Size(926, 339);
+            this.leaderBoardGrid.Size = new System.Drawing.Size(926, 241);
             this.leaderBoardGrid.TabIndex = 8;
             // 
             // lblLeaderboard
             // 
             this.lblLeaderboard.AutoSize = true;
-            this.lblLeaderboard.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLeaderboard.Location = new System.Drawing.Point(533, 22);
+            this.lblLeaderboard.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLeaderboard.Location = new System.Drawing.Point(159, 209);
             this.lblLeaderboard.Name = "lblLeaderboard";
-            this.lblLeaderboard.Size = new System.Drawing.Size(199, 37);
+            this.lblLeaderboard.Size = new System.Drawing.Size(152, 29);
             this.lblLeaderboard.TabIndex = 9;
             this.lblLeaderboard.Text = "Leaderboard";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(12, 22);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(246, 37);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "Learning Center";
             // 
             // form1BindingSource
             // 
@@ -103,7 +114,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1364, 730);
+            this.ClientSize = new System.Drawing.Size(1284, 730);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.lblLeaderboard);
             this.Controls.Add(this.leaderBoardGrid);
             this.Controls.Add(this.btnAdmin);
@@ -111,7 +123,7 @@
             this.Controls.Add(this.btnStartQuiz);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Practice Quiz";
+            this.Text = "Learning Center - Leader Board";
             this.Activated += new System.EventHandler(this.Form1_Activated);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -130,6 +142,7 @@
         private System.Windows.Forms.BindingSource form1BindingSource;
         private System.Windows.Forms.DataGridView leaderBoardGrid;
         private System.Windows.Forms.Label lblLeaderboard;
+        private System.Windows.Forms.Label label1;
     }
 }
 

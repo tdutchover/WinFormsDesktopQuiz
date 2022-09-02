@@ -70,6 +70,7 @@ namespace WinFormsDesktopQuiz
             this._quizFormRenderer = new QuizFormRenderer(lblQuizStatus, lblScoreStatus, lblQuestion, btnNext,
                                                          btnSubmitAnswer, lblCorrectAnswer, lblWrongAnswer,
                                                          lblResponseToSelectedAnswer,
+                                                         lblIdentifyCorrectAnswerWhenWrong,
                                                          _allRadioButtons, this._totalQuestionCount);
             // Show first nextQuestion
             int firstQuestionIndex = 0;
@@ -84,6 +85,7 @@ namespace WinFormsDesktopQuiz
         {
             // The response must only display after the user selects an answer.
             lblResponseToSelectedAnswer.Visible = false;
+            lblIdentifyCorrectAnswerWhenWrong.Visible = false;
 
             // The response to a user answer choice must be hidden before the user makes a choice.
             // We don't bother to clear the text on these because the text is correctly set when the user choose an answer.
@@ -127,7 +129,8 @@ namespace WinFormsDesktopQuiz
             else if (this._currentQuestionIndex == this._totalQuestionCount - 1)
             {
                 // Submitting Quiz
-                QuizCompletedForm quizCompletedForm = new QuizCompletedForm(this._landingPageForm, this._quizRespository, correctAnswersSoFar);
+                QuizCompletedForm quizCompletedForm = new QuizCompletedForm(this._landingPageForm, this._quizRespository,
+                                                                            correctAnswersSoFar, this._totalQuestionCount);
                 NavigationUtils.NavigateToForm(quizCompletedForm, this);
 
                 // Don't invoke this.Close() here because that will execute the FormClosing handler, which will navigate to the landing page
@@ -142,23 +145,6 @@ namespace WinFormsDesktopQuiz
         private List<Answer> FindAnswersNew(Question question, out Answer correctAnswer)
         {
             List<Answer> answers = _quizRespository.FindAnswers(question.QuestionId, out correctAnswer);
-
-            // TODO: Delete test code
-
-            //StringBuilder sb = new StringBuilder();
-
-            //foreach(Answer answer in oldAnswers)
-            //{
-            //    if (answer == _correctAnswer)
-            //    {
-            //        sb.AppendLine($"Correct Answer: TRUE, AnswerId: {answer.AnswerId}, Answer-Description: {answer.Description}");
-            //    }
-            //    else
-            //    {
-            //        sb.AppendLine($"AnswerId: {answer.AnswerId}, Answer-Description: {answer.Description}");
-            //    }
-            //}
-            //MessageBox.Show(sb.ToString());
             return answers;
         }
         private void QuizForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -174,25 +160,34 @@ namespace WinFormsDesktopQuiz
         }
         private void radioBtn_AnswerCandidate1_Click(object sender, EventArgs e)
         {
-            btnSubmitAnswer.Visible = true;
+            //btnSubmitAnswer.Visible = true;
             _selectedRadioButton = radioBtn_AnswerCandidate1;
+            SubmitAnswer();
         }
         private void radioBtn_AnswerCandidate2_Click(object sender, EventArgs e)
         {
-            btnSubmitAnswer.Visible = true;
+            //btnSubmitAnswer.Visible = true;
             _selectedRadioButton = radioBtn_AnswerCandidate2;
+            SubmitAnswer();
         }
         private void radioBtn_AnswerCandidate3_Click(object sender, EventArgs e)
         {
-            btnSubmitAnswer.Visible = true;
+            //btnSubmitAnswer.Visible = true;
             _selectedRadioButton = radioBtn_AnswerCandidate3;
+            SubmitAnswer();
         }
         private void radioBtn_AnswerCandidate4_Click(object sender, EventArgs e)
         {
-            btnSubmitAnswer.Visible = true;
+            //btnSubmitAnswer.Visible = true;
             _selectedRadioButton = radioBtn_AnswerCandidate4;
+            SubmitAnswer();
         }
         private void btnSubmitAnswer_Click(object sender, EventArgs e)
+        {
+            // The Submit Answer button is only needed for multi-choice like checkbox
+            // SubmitAnswer();
+        }
+        private void SubmitAnswer()
         {
             Debug.Assert(_radioBtnAnswerMap.ContainsKey(_selectedRadioButton));
             Answer selectedAnswer = _radioBtnAnswerMap[_selectedRadioButton];
@@ -203,27 +198,12 @@ namespace WinFormsDesktopQuiz
 
                 // Display UI for correct choice of answer
                 _quizFormRenderer.DisplayCorrectChoiceUI(_selectedRadioButton, this.correctAnswersSoFar, this._totalQuestionCount);
- 
-                // TODO Delete old
-                //_quizFormRenderer.DisplayResponseToAnswerChoice((colorForCorrectAnswer) =>
-                //{
-                //    QuizFormRenderer.DisplayResponseToCorrectAnswerChoice(lblCorrectAnswer, lblResponseToSelectedAnswer,
-                //                                                          _selectedRadioButton, colorForCorrectAnswer);
-                //});
             }
             else
             {
                 // Display UI for wrong choice of answer
                 var correctAnswerRadioBtn = _radioBtnAnswerMap.FirstOrDefault(x => x.Value == _correctAnswer).Key;
                 _quizFormRenderer.DisplayWrongChoiceUI(correctAnswerRadioBtn, _selectedRadioButton);
-
-                // TODO Delete old
-                //_quizFormRenderer.DisplayResponseToAnswerChoice((colorForCorrectAnswer) =>
-                //{
-                //    var correctAnswerRadioBtn = _radioBtnAnswerMap.FirstOrDefault(x => x.Value == _correctAnswer).Key;
-                //    QuizFormRenderer.DisplayResponseToWrongAnswerChoice(lblWrongAnswer, lblCorrectAnswer, lblResponseToSelectedAnswer,
-                //                                                        _selectedRadioButton, correctAnswerRadioBtn, colorForCorrectAnswer);
-                //});
             }
         }
     }

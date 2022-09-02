@@ -18,12 +18,13 @@ namespace WinFormsDesktopQuiz
         Label lblCorrectAnswer;
         Label lblWrongAnswer;
         Label lblResponseToSelectedAnswer;
+        Label _lblIdentifyCorrectAnswerWhenWrong;
         List<RadioButton> allRadioButtons;
         Button btnSubmitAnswer;
         private int totalQuestionCount;
         public QuizFormRenderer(Label lblQuizStatus, Label lblScoreStatus, Label lblQuestion, Button btnNext,
                                 Button btnSubmitAnswer, Label lblCorrectAnswer, Label lblWrongAnswer,
-                                Label lblResponseToSelectedAnswer,
+                                Label lblResponseToSelectedAnswer, Label lblIdentifyCorrectAnswerWhenWrong,
                                 List<RadioButton> allRadioButtons, int totalQuestionCount)
         {
             this.lblQuizStatus = lblQuizStatus;
@@ -34,6 +35,7 @@ namespace WinFormsDesktopQuiz
             this.lblCorrectAnswer = lblCorrectAnswer;
             this.lblWrongAnswer = lblWrongAnswer;
             this.lblResponseToSelectedAnswer = lblResponseToSelectedAnswer;
+            this._lblIdentifyCorrectAnswerWhenWrong = lblIdentifyCorrectAnswerWhenWrong;
             this.allRadioButtons = allRadioButtons;
             this.totalQuestionCount = totalQuestionCount;
         }
@@ -116,6 +118,7 @@ namespace WinFormsDesktopQuiz
 
             lblResponseToSelectedAnswer.ForeColor = colorForCorrectAnswer;
             lblResponseToSelectedAnswer.Text = TextResources.RESPONSE_TO_CORRECT_ANSWER_CHOICE;
+            MoveLabelToLeftOfRadioButton(lblResponseToSelectedAnswer, selectedRadioButton);
         }
         private void DisplayResponseToWrongAnswerChoice(RadioButton selectedRadioButton, RadioButton correctAnswerRadioBtn, Color colorForCorrectAnswer)
         {
@@ -134,6 +137,12 @@ namespace WinFormsDesktopQuiz
 
             lblResponseToSelectedAnswer.ForeColor = colorForWrongAnswer;
             lblResponseToSelectedAnswer.Text = TextResources.RESPONSE_TO_WRONG_ANSWER_CHOICE;
+            MoveLabelToLeftOfRadioButton(lblResponseToSelectedAnswer, selectedRadioButton);
+
+            _lblIdentifyCorrectAnswerWhenWrong.ForeColor = colorForCorrectAnswer;
+            MoveLabelToLeftOfRadioButton(_lblIdentifyCorrectAnswerWhenWrong, correctAnswerRadioBtn);
+
+            _lblIdentifyCorrectAnswerWhenWrong.Visible = true;
         }
         /// <summary>
         /// Move to the specified label so that its text location exactly matches the text location of the specified radio button.
@@ -148,6 +157,28 @@ namespace WinFormsDesktopQuiz
             int yOffsetToTextOnRadioButton = 2;
 
             lbl.Location = new Point(rb.Location.X + xOffsetToTextOnRadioButton, rb.Location.Y + yOffsetToTextOnRadioButton);
+        }
+
+        /// <summary>
+        /// Move to the specified label so that its text location is far to the left of the specified radio button.
+        /// The intent is that the label displays a message that identifies a user's answer choice as either correct or incorrect.
+        /// This is also used for identifying the correct answer when the user has chose the wrong answer.
+        /// </summary>
+        /// <param name="lbl">Need Label so we can set its location</param>
+        /// <param name="rb">Need RadioButton to get its location</param>        
+        private static void MoveLabelToLeftOfRadioButton(Label lbl, RadioButton rb)
+        {
+            // These offsets are hardcoded for the resolution of my particular screen.
+            // So it's unlikely to match other resolutions.
+            int xOffsetToTextOnRadioButton = -280;
+            int yOffsetToTextOnRadioButton = 2;
+
+            Point rbLocationPerGrandparent = new Point(rb.Parent.Location.X + rb.Location.X,
+                                                       rb.Parent.Location.Y + rb.Location.Y);
+
+            // The label must be positioned relative to its own parent container, which is the grandparent of the radio button.
+            lbl.Location = new Point(rbLocationPerGrandparent.X + xOffsetToTextOnRadioButton,
+                                     rbLocationPerGrandparent.Y + yOffsetToTextOnRadioButton);
         }
         private void HideAllRadioButtons()
         {
