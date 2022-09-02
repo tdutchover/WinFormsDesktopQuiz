@@ -1,0 +1,211 @@
+Assignments 6.5 - Desktop Project Plan
+
+TODO
+	1. Store quiz session score with user name
+		1. Add DB tables for storing scores.
+		2. Display UI showing quiz session score and allow user the option to enter a name
+		3. Store data to database.
+		4. Landing Page
+			Display top scores
+			
+	2. Enter real quiz questions into DB
+	3. Make all the windows the same size.
+	4. Make backup in Github
+	5. Add Admin UI for entering questions.
+	6. Add Categories for quiz questions?
+	
+	Separate business logic from UI rendering.
+	Add scrollbars - otherwise the content is not accessible on other monitor resolutions.
+
+	Display a label with arrow pointing to correct answer
+	Display a label with arrow pointing to wrong answer
+
+Project: Quiz Generator 
+
+Overview
+	This project will allow a student to take a quiz.
+	
+	Specifications
+		- This is a Windows Forms app.
+		- The following tables will only be read by the app and seeded with data prior to running the app.
+			Questions Table
+			Answers Table
+	
+	Constraints of the first implementation
+		1. Each quiz session will ask 5 random questions.
+		2. The Leader Board will not display. This will be added if time allows.
+		3. Questions are not categorized.
+		4. Each question has only one correct answer.
+
+Application Behavior
+	The application's landing page will display the following:
+
+		User Interface Component	Description
+		------------------------	-------------
+		"Start Quiz" button			User clicks to start a quiz
+		"Exit" button				Application exits
+	
+	Quiz Behavior
+		Each question is displayed on it's own page.
+		The question is displayed with 4 possible answers below it.
+		The answers are displayed as radio buttons.
+		More UI is described below.
+		
+			User Interface Component	Description
+			------------------------	-------------
+			"Cancel" button				Aborts quiz and display landing page
+			"Submit" button				Display correct answer to the user.
+			"Next Question" button		Advance to next question
+
+		When a quiz is complete, the Quiz Completed page is displayed.
+		
+Quiz Completed page
+		User Interface Component			Description
+		------------------------			-------------	
+		# out of # questions are correct	Displays the quiz score
+		OK button							Navigate to Landing page.
+
+Enhancement 1: Leader Board
+
+	Abstract: Display a Leader Board on the landing page. That will display the top scores of all completed quizes.
+
+	Details:
+		This includes the following:
+		
+			1. Implement table "Score".
+				Each completed quiz will write to table "Score".
+				The Leader Board on the Landing page will read table "Score".
+
+			2. The "Quiz Completed page" will now behave as follows:
+			
+				User Interface Component			Description
+				------------------------			-------------	
+				# out of # questions are correct	Displays the quiz score (Legacy Behavior)
+				"Call Sign" text field				The user has an option to enter a name that will display on the Leader Board for this quiz session.
+				OK button							1. Stores the following data into the Scores table, for possible display on the Leader Board
+														a. Call Sign in column "Scores.CallSign".
+														b. Count of correct answers stored into column "Scores.CorrectAnswerCount"
+													2. Navigate to Landing page. (Legacy Behavior)
+													
+			3. The Landing page will now behave as follows:
+
+				User Interface Component	Description
+				------------------------	-------------
+				A Leader Board				Shows the top 3 quiz scores as follows:
+												CallSign, # of correct answers out of 5
+												
+				"Start Quiz" button			User clicks to start a quiz (Legacy Behavior)
+				"Exit" button				Application exits (Legacy Behavior)
+
+Enhancement 2: Implement categories for questions
+	Abstract: The user can choose which category of questions that a quiz will present.
+		1. Each question can be associated with one or more categories
+	
+	Details:
+		1. Implement the following database tables
+			QCategory			- Holds categories
+			Question_QCategory	- intersection table assigns one or more categories to each question
+			
+		2. Allow the user to choose a quiz category on the Landing page.
+
+Enhancement 3: 
+	Summary: Allow a user to choose the name of a prepared quiz that always has the same questions.
+	
+	Details:
+		1. Implement the following database tables:
+			Quiz Table
+			Question_Quiz
+		2. Update the Landing page so the user can select a quiz by name.
+
+**************************
+Database Schema
+
+	Question Table
+		Column						Data Type		Null Allowed	Comments
+		-----------					----------		-------------	---------
+		QuestionId (PK)				int				no
+		Description					nvarchar		no
+	
+			Example Records:
+				QuestionId	Description
+				----		-----------
+				1			What are classes?
+				2			What are joins?
+				3			What is the correct declaration of a delegate?
+
+	Answer Table	- Holds all candidate answers
+		Column					Data Type		Null Allowed	Comments
+		-----------				----------		-------------	---------
+		AnswerId (PK)			int				no				
+		Description				nvarchar		no				Text for the candidate answer
+
+			Example Records:
+				Id		Description
+				----	----------------
+				1		some answer sample 1
+				2		some answer sample 2
+				3		some answer sample 3
+
+	QuestionAnswer - Intersection table. Allows many-to-many relations between tables Questions and Answers
+						That allows for the following capabilities:
+						Multiple questions can be associated with some of the same candiate answers
+						A question may have multiple correct answers, although that feature is not implemented in this first product release.
+		Column					Data Type		Null Allowed	Comments
+		-----------				----------		-------------	---------
+		QuestionAnswerId (PK)	int				no				
+		QuestionId (FK)			int				no
+		AnswerId (FK)			int				no
+		CorrectAnswer			boolean			no				true if this is a correct answer for the question
+
+The following are database tables that may be added in future enhancements
+
+	Score Table
+		Column				Data Type		Null Allowed	Comments
+		-----------			----------		-------------	---------
+		ScoreId (PK)		int				no
+		CallSign			nvarchar(50)	yes				Null is allowed because a user may not want to enter a call sign name for their test score
+		CorrectAnswerCount	int				no				Number of correct answers for a quiz session.
+
+			Example Records:
+				Id		CallSign		CorrectAnswers
+				----	------------	---------------------------
+				1		Bob Smith		4
+				2		Thor			3
+				3		Tiger			2
+				4		OO Expert		5
+				5		Alice			4
+
+	QCategory Table	- Holds categories that can be associated with questions.
+		Column				Data Type		Null Allowed	Comments
+		-----------			----------		-------------	---------
+		QCategoryId (PK)	int				no
+		CategoryName		string			no				
+		
+			Example Records:
+				QCategoryId		CategoryName
+				----			------------
+				1				C#
+				2				OOP
+				3				Database
+
+	Question_QCategory intersection table. Allows many-to-many relations between tables Question and QCategory
+		Column			Data Type		Null Allowed	Comments
+		-----------		----------		-------------	---------
+		Question_QCategoryId (PK)		int				no
+		QuestionId (FK) int				no				Corresponds to column Questions.QuestionId
+		QCategoryId(FK)	int				no				Corresponds to column QCategory.QCategoryId
+
+	Quiz Table
+		Column			Data Type		Null Allowed	Comments
+		-----------		----------		-------------	---------
+		Id (PK)			int				no				
+		QuizName		nvarchar		no	
+		
+	Question_Quiz Table	- Purpose: Intersection table allowing many-to-many relations between tables Quiz and Questions.
+		Column					Data Type		Null Allowed	Comments
+		-----------				----------		-------------	---------
+		QuestionQuizId (PK)		int				no				
+		Quiz (FK)				int				no
+		Questions (FK)			int				no
+		
+*********************************************************
